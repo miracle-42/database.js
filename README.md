@@ -16,7 +16,33 @@ Set it to either `postgres` or `oracle`:
     "instance" : "dbjs01",
     "database" : "postgres",
 ```
-
+Configure database port number in `conf/database/postgres.json`:
+```
+{
+  "database":
+    {
+      "type": "postgres",
+      "test": "select user",
+      "jdbc": "jdbc:postgresql://localhost:5432/hr?user=[username]&password=[password]&ssl=false"
+```
+Set credentials:
+```
+  "pools":
+  {
+    "proxy":
+    {
+      ...
+      "username": "joe",
+      "password": "secret",
+      ...
+    }
+    ,
+    "anonymous":
+    {
+      ...
+      "username": "joe",
+      "password": "secret",
+```
 Choose http port numbers to use:
 
 ```
