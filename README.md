@@ -6,9 +6,9 @@ A REST API to connect a Javascript/Typescript application to a PostgreSQL or Ora
 
 ## Installation
 
-Unpack the compiled java program [database.js.zip](downloads/database.js.zip):
+Unpack the compiled java program [openrestdb.js.zip]:
 
-`unzip database.js.zip`
+`unzip openrestdb.js.zip`
 
 Configure database brand to use in `conf/config.json`.
 Set it to either `postgres` or `oracle`:
