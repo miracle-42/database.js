@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>openrestdb</groupId>
+  <artifactId>authenticator.js</artifactId>
+  <version>2.1</version>
+  <description>Project for Authenticator</description>
+
+  <properties>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20200518</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>${basedir}</directory>
+        <includes>
+          <include>*</include>
+        </includes>
+      </resource>
+
+      <resource>
+        <directory>src/main/resources/</directory>
+        <includes>
+          <include>*</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>14</release>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <includes>
+            <include>**/sso/*</include>
+            <include>**/database/rest/admin/*.class</include>
+            <include>**/database/rest/client/*.class</include>
+            <include>**/database/rest/config/Paths*.class</include>
+            <include>**/database/rest/config/SSOConfig.class</include>
+            <include>**/database/rest/logger/Formatter.class</include>
+            <include>**/database/rest/security/Keystore.class</include>
+            <include>**/database/rest/security/PKIContext.class</include>
+          </includes>
+          <archive>
+            <manifest>
+              <mainClass>database.rest.sso.SSOAuthenticater</mainClass>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>./json</classpathPrefix>
+            </manifest>
+            <addMavenDescriptor>false</addMavenDescriptor>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
