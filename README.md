@@ -2,7 +2,7 @@
 
 A REST API to connect a Javascript/Typescript application to a PostgreSQL or Oracle database.
 
-![Blocks](img/blocks.png)
+![Blocks](img/blocks.svg)
 
 ## Installation
 
