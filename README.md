@@ -1,14 +1,14 @@
-# database.js
+# OpenRestDB
 
 A REST API to connect a Javascript/Typescript application to a PostgreSQL or Oracle database.
 
-![Blocks](img/blocks.png)
+![Blocks](img/blocks.svg)
 
 ## Installation
 
-Unpack the compiled java program [openrestdb.js.zip]:
+Unpack the compiled OpenRestDB java program `openrestdb-1.0.zip`:
 
-`unzip openrestdb.js.zip`
+`unzip openrestdb-1.0.zip`
 
 Configure database brand to use in `conf/config.json`.
 Set it to either `postgres` or `oracle`:
@@ -59,33 +59,33 @@ Choose http port numbers to use:
 
 Save the file and exit.
 
-## Start database.js
+## Start openrestdb
 
-Run the script to start database.js:
+Run the script to start openrestdb:
 
 ```
-bin/database.js start
+bin/openrestdb start
 ```
 
-On Microsoft Windows run the script `bin\database.js.cmd`.
+On Microsoft Windows run the script `bin\openrestdb.cmd`.
 
 Start a browser and connect to [http://localhost:9002](http://localhost:9002/) .
-It will show the text `database.js is running`.
+It will show the text `openrestdb is running`.
 
-## Stop database.js
+## Stop openrestdb
 
 Run the same script for stopping:
 
 ```
-bin/database.js stop
+bin/openrestdb stop
 ```
 
 ## Status
 
-Get the status of the running `database.js`:
+Get the status of the running `openrestdb`:
 
 ```
-$ bin/database.js status
+$ bin/openrestdb status
 
 Cores: 12, Waiters: 12, Workers: 96
 
