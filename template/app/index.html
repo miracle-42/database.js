@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="da"><head>
+<title>OpenRestDB - Status</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+    body {
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+  	width: 450px;
+  	border: 15px solid darkblue;
+  	padding: 50px;
+  	margin: 20px;
+    }
+    pre {
+  	padding: 10px;
+    	color: lightgreen;
+	background: black;
+
+    }
+</style>
+</head><body>
+<h1>OpenRestDB - Status</h1>
+<h2>Browser test</h2>
+<p>Press button to get OpenRestDB service status.</p>
+<form method="POST" action="status">
+<input type="submit" value="Get Status">
+</form>
+
+<p>Expected resonse:</p>
+<p><img alt="status-response" src="status-response.png"></p>
+
+<h2>Command line test</h2>
+<pre>
+$ curl --silent --data '' http://localhost:9002/status
+{
+  "success": true,
+  "proxy-pool": true,
+  "fixed-pool": true,
+  "instance": "dbjs01"
+}
+</pre>
+<p><i><a href="https://github.com/miracle-42/OpenRestDB">OpenRestDB</a></i></p>
+</body></html>
