@@ -2,9 +2,6 @@
   "instance": "dbjs01",
   "database": "postgres",
   "topology": "standalone",
-  "sso": {
-    "timeout": 20
-  },
   "rest": {
     "ses.dump": 300,
     "ses.timeout": 60,
