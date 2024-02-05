@@ -87,6 +87,8 @@ Get the status of the running `openrestdb`:
 ```
 $ bin/openrestdb status
 
+Instance: dbjs01, SSL: 9001, Plain: 9002, Admin: 9003
+
 Cores: 12, Waiters: 12, Workers: 96
 
 Memory in MB
