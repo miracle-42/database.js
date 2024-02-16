@@ -2,13 +2,17 @@
 # vim: ts=4 expandtab :
 set -e
 
-if [ ! -d build ]
+BUILD=${1:-build}
+
+if [ ! -d ${BUILD} ]
 then
-	cp -a template build
+    echo Creating runtime installation in directory: ${BUILD}/
+	cp -a template ${BUILD}
 fi
 
 if [ ! -e target/openrestdb-2.1.jar ]
 then
+    echo Compiling OpenRestDB
 	mvn package
 fi
 

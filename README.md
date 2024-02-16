@@ -1,5 +1,7 @@
 # OpenRestDB
 
+*Release 3.1.0*
+
 A REST API to connect a Javascript/Typescript application to a PostgreSQL or Oracle database.
 
 ![Blocks](img/blocks.svg)
@@ -9,6 +11,7 @@ A REST API to connect a Javascript/Typescript application to a PostgreSQL or Ora
 Unpack the compiled OpenRestDB java program `openrestdb-1.0.zip`:
 
 `unzip openrestdb-1.0.zip`
+
 
 Configure database brand to use in `conf/config.json`.
 Set it to either `postgres` or `oracle`:
