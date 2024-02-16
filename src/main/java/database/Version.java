@@ -24,5 +24,5 @@ package database;
 
 public class Version
 {
-   public static final String number = "1.0.0";
+   public static final String number = "3.1.0";
 }
