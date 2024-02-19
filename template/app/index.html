@@ -66,8 +66,9 @@ $ curl --silent --data '' <span id="origin">localhost:9002</span>/status
 
     // Change 'curl' URL to the current URL
     var origin = window.location.origin;
+    var originPath = origin+window.location.pathname.replace(/\/[^\/]+$/,"");
     document.getElementById("origin").innerHTML = origin
-      ? origin
+      ? originPath
       : "&lt;error-disk-file&gt;";
     var loadCount = 0;
     var HttpClient = function() {
@@ -84,7 +85,7 @@ $ curl --silent --data '' <span id="origin">localhost:9002</span>/status
 
     function getJsonResponse(path, postData) {
       var client = new HttpClient();
-      client.post(origin + path, postData, function(response) {
+      client.post(originPath + path, postData, function(response) {
         try {
           defval = JSON.parse(response);
         } catch (e) {
