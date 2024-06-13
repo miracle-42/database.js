@@ -1,0 +1,373 @@
+{
+   "datasources":
+   [
+      {
+         "id": "stmt01",
+         "query": "select count(c) from courses"
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt02",
+         "order": "time_start",
+
+         "query":
+         [
+            "select ed.time_start, dt.datetype_title from eventdates ed",
+            "join datetypes dt",
+            "on dt.datetype_id = ed.datetype_id",
+            "join events e",
+            "on e.event_id = ed.event_id",
+            "where e.event_name = :course_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt03",
+         "order": "time_start",
+
+         "query":
+         [
+            "select ed.event_id, ed.datetype_id, ed.time_start",
+            "ed.notes, ed.has_no_time, e.event_name",
+            "from eventdates ed",
+            "join events e",
+            "on e.event_id = ed.event_id",
+            "where date( ed.time_start ) between :startdate and :enddate"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt04",
+
+         "query":
+         [
+            "select a.* from associates a",
+            "join associates_and_roles",
+            "on a.associated_id = associates_and_roles.associated_id",
+            "join roletypes",
+            "on roletypes.roletype_id = associates_and_roles.roletype_id",
+            "where roletypes.role_english = :roletype"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt05",
+
+         "query":
+         [
+            "select count(a) from associates a",
+            "join associates_and_roles",
+            "on a.associated_id = associates_and_roles.associated_id",
+            "join roletypes",
+            "on roletypes.roletype_id = associates_and_roles.roletype_id",
+            "where roletypes.role_english = :roletype"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt06",
+
+         "query":
+         [
+            "select e.max_amount_instructors from events e",
+            "where e.event_name = :event_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt07",
+
+         "query":
+         [
+            "select c.first_names, c.last_name, c.instructor_or_dmt_ranked_number, c.assigned",
+            "from courseinstructors c",
+            "where c.event_name = :course_name",
+            "and c.instructor_or_dmt_ranked_number = 0"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt08",
+
+         "query":
+         [
+            "select count(c)",
+            "from courseinstructors c",
+            "where c.event_name = :course_name",
+            "and c.instructor_or_dmt_ranked_number = 0"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt09",
+
+         "query":
+         [
+            "select e.max_amount_dmt",
+            "from events e",
+            "where e.event_name = :course_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt10",
+
+         "query":
+         [
+            "select c.first_names, c.last_name, c.instructor_or_dmt_ranked_number, c.assigned",
+            "from courseinstructors c",
+            "where c.event_name = :course_name",
+            "and c.instructor_or_dmt_ranked_number > 0"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt11",
+
+         "query":
+         [
+            "select e.max_amount_instructors",
+            "from events e",
+            "where e.event_name = :course_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt12",
+         "order": "instructor_or_dmt_ranked_number",
+
+         "query":
+         [
+            "select a.first_names, a.last_name, i.instructor_or_dmt_ranked_number",
+            "from registered_instructors_and_dmts i",
+            "join events e",
+            "on i.event_id = e.event_id",
+            "join associates a",
+            "on a.associated_id = i.associated_id",
+            "where e.event_name = :event_name",
+            "and i.assigned = true",
+            "and i.instructor_or_dmt_ranked_number > :dmt_rank"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt13",
+
+         "query":
+         [
+            "select count(c)",
+            "from courseinstructors c",
+            "where c.event_name = :course_name",
+            "and c.instructor_or_dmt_ranked_number > 0"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt14",
+         "order": "instructor_or_dmt_ranked_number",
+
+         "query":
+         [
+            "select a.first_names, a.last_name, i.instructor_or_dmt_ranked_number",
+            "from registered_instructors_and_dmts i",
+            "join events e",
+            "on i.event_id = e.event_id",
+            "join associates a",
+            "on a.associated_id = i.associated_id",
+            "where e.event_name = :event_name",
+            "and i.assigned = true",
+            "and i.instructor_or_dmt_ranked_number > :dmt_rank"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt15",
+
+         "query":
+         [
+            "select student.height_in_cm, student.shoe_size, student.weight_in_kg, student.note, student.webshop_ordernumber,",
+            "student.bought_insurance, student.nordic_ocean_experienced,",
+            "student.event_name,",
+            "student.first_names, student.last_name, student.area_phone_code, student.phone_number, student.email",
+            "from coursestudents student",
+            "where student.event_name = :course_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt16",
+
+         "query":
+         [
+            "select count(student) from registered_students student",
+            "join events e",
+            "on student.event_id = e.event_id",
+            "where e.event_name = :event_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt17",
+
+         "query":
+         [
+            "select studevdays.datetype_title, studevdays.time_start",
+            "from studenteventdays__toedit studevdays",
+            "where studevdays.event_name = :event_name"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt18",
+
+         "query":
+         [
+            "select student.signed_up_date::date as signed_date",
+            "from coursestudents student",
+            "where student.event_name = :course_name",
+            "and student.email = :email",
+            "and student.first_names = :first_names"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt19",
+
+         "query":
+         [
+            "select e.*  from events e",
+            "join eventtypes et",
+            "on e.eventtype_id = et.eventtype_id",
+            "where et.is_a_course = :isacourse",
+            "and",
+            "(",
+            "    select max(ed.time_start) from eventdates ed",
+            "    join events e_tmp",
+            "    on ed.event_id = e_tmp.event_id",
+            "    where e_tmp.event_id = e.event_id",
+            ")",
+            "    < :currentdate"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+      ,
+      {
+         "id": "stmt20",
+
+         "query":
+         [
+            "select e.*  from events e",
+            "join eventtypes et",
+            "on e.eventtype_id = et.eventtype_id",
+            "where et.is_a_course = :isacourse",
+            "and",
+            "(",
+            "    select max(ed.time_start) from eventdates ed",
+            "    join events e_tmp",
+            "    on ed.event_id = e_tmp.event_id",
+            "    where e_tmp.event_id = e.event_id",
+            ")",
+            "    >= :currentdate"
+         ]
+         ,
+         "insert": {"accept": false},
+         "update": {"accept": false},
+         "delete": {"accept": false},
+         "select": {"accept": true,"check": "none"}
+      }
+   ]
+}
